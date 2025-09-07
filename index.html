@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+    <title>english-janala</title>
+    <!-- tailwind css and daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- css file -->
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body class="hind-siliguri-font">
+
+    <!-- this is header section  -->
+    <header class="p-4 bg-[#BADEFF50] mb-8">
+        <nav class="flex items-center justify-between max-w-[1280px] mx-auto">
+            <div class="logo-div flex justify-start items-center gap-1">
+                <h3 class="text-2xl font-bold">English</h3>
+                <div class="logo flex items-center justify-center">
+                    <img src="./assets/logo.png" alt="">
+                </div>
+                <h3 class="text-xl font-semibold">জানালা</h3>
+            </div>
+
+            <div class="flex gap-2 text-lg font-medium">
+                <div class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+                <div class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i> Learn</div>
+                <div class="btn btn-outline btn-primary"><i class="fa-solid fa-right-from-bracket"></i> Log Out</div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- main section  -->
+    <main>
+
+        <!-- hero students section  -->
+        <section class="max-w-[1280px] mx-auto flex items-center mb-8">
+            <div class="flex-1 flex flex-col gap-8">
+                <h1 class="text-3xl font-semibold"><span class="text-[#00BCFF]">English</span> is is Easy!!</h1>
+                <h2 class="text-lg font-semibold">
+                    আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন <br>অথবা আপনার দক্ষতা বাড়াতে চান,
+                    আমাদের Interactive Lessons <br> আপনাকে নিয়ে যাবে অন্য একটি Level এ
+                </h2>
+                <form class="flex flex-col gap-3">
+                    <input type="text" class="border-1 rounded-sm border-gray-500 w-60" placeholder="Write Your Name">
+                    <input type="password" class="border-1 rounded-sm border-gray-500 w-60"
+                        placeholder="Write Your PassWord">
+                    <div><button class="btn btn-active btn-primary">Get Started</button></div>
+                </form>
+            </div>
+            <div class="image flex-1">
+                <img src="./assets/hero-student.png" alt="">
+            </div>
+        </section>
+
+        <!-- lets learn vocabularies section  -->
+        <section class="max-w-[1280px] mx-auto mb-20">
+            <h2 class="text-center mb-8 text-3xl font-extrabold"><span class="text-[#00BCFF]">Let's</span> Learn
+                vocabularies</h2>
+            <div id="level-container" class="mb-8">
+
+            </div>
+            <div id="first-default-message"
+                class="bg-gray-200 text-center max-w-[940px] py-12 px-16 rounded-xl mx-auto mb-8">
+                <p class="font-medium mb-4">আপনি এখনো কোন Lesson Select করেন নি</p>
+                <h2 class="font-medium text-4xl">একটি Lesson Select করুন।</h2>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- footer section  -->
+    <footer class="bg-gray-200 border-t-2 border-gray-400">
+        <div class="footer-container max-w-[1280px] mx-auto py-20 flex justify-between items-center">
+            <div class="flex flex-col gap-2">
+                <div class="logo-div flex justify-start items-center gap-1">
+                    <h3 class="text-2xl font-bold">English</h3>
+                    <div class="logo flex items-center justify-center">
+                        <img src="./assets/logo.png" alt="">
+                    </div>
+                    <h3 class="text-xl font-semibold">জানালা</h3>
+                </div>
+                <h2 class="text-xl">ইংরেজি শিখুন সহজে</h2>
+                <p class="text-lg">Providing ED-Tech Applications since 2025</p>
+            </div>
+
+            <div>
+                <p class="mb-2 text-lg">follow us</p>
+                <div class="flex items-center">
+                    <img src="./assets/fb-thumb.png" alt="">
+                    <img class="ml-2" src="./assets/youtube-thumb.png" alt="">
+                    <img class="ml-2" src="./assets/instagram-thumb.png" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- js file added -->
+    <script src="./script/index.js"></script>
+</body>
+
+</html>
