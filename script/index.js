@@ -6,22 +6,35 @@ const loadLevels = () => {
         .then((data) => displayEachLevel(data.data))
 }
 
+//set bg color for active lesson
+const removeActive = () =>{
+    const allLessons = document.querySelectorAll(".lesson-btn");
+    allLessons.forEach((allLesson)=>{
+        allLesson.classList.remove("active");
+    })
+}
+
 //display each level
 const displayEachLevel = (levels) => {
     const levelContainer = document.getElementById("level-container");
     levels.forEach((level) => {
         const levelName = document.createElement("div")
-        levelName.innerHTML = `<div onclick="loadLevelWords(${level.level_no})" class="btn btn-outline btn-primary hover:btn-active"><i class="fa-solid fa-book-open"></i> level-${level.level_no}</div>`;
+        levelName.innerHTML = `<div id="lesson-${level.level_no}" onclick="loadLevelWords(${level.level_no})" class="lesson-btn btn btn-outline btn-primary hover:btn-active"><i class="fa-solid fa-book-open"></i> level-${level.level_no}</div>`;
         levelContainer.appendChild(levelName);
     })
 }
 
 //load each levels every words
-const loadLevelWords = (data) => {
-    const url = `https://openapi.programming-hero.com/api/level/${data}`
+const loadLevelWords = (id) => {
+    const url = `https://openapi.programming-hero.com/api/level/${id}`
     fetch(url)
         .then((res) => res.json())
-        .then((data) => displayLevelWords(data.data));
+        .then((data) => {
+            removeActive()
+            const clickBtn = document.getElementById(`lesson-${id}`);
+            clickBtn.classList.add("active")
+            displayLevelWords(data.data)
+        });
 }
 
 
@@ -29,16 +42,13 @@ const loadLevelWords = (data) => {
 //display each levels every words
 const displayLevelWords = (levelWords) => {
 
-
-    // document.getElementById("first-default-message").style.display = "none";
-    // const emptyWordMessage = document.getElementById("empty-word-message")
     const allLevelWords = document.getElementById("all-level-words")
     allLevelWords.innerHTML = "";
 
     if (levelWords.length == 0) {
         allLevelWords.innerHTML = `
         <div
-        class="text-center  col-span-full rounded-xl py-10 space-y-6 font-bangla"
+        class="text-center  col-span-full rounded-xl py-10 space-y-6"
       >
         <img class="mx-auto" src="./assets/alert-error.png"/>
         <p class="text-xl font-medium text-gray-400">
@@ -56,7 +66,7 @@ const displayLevelWords = (levelWords) => {
         wordsCards.innerHTML = `<div class="text-center p-4 bg-white shadow-sm rounded-lg">
     <h1 class="mb-2 font-semibold text-3xl">${levelWord.word}</h1>
     <h1 class="mb-2  text-xl">meaning/pronunciation</h1>
-    <h1 class="mb-2  text-xl">${levelWord.meaning}/${levelWord.pronunciation}</h1>
+    <h1 class="mb-2  text-xl">${levelWord.meaning ? `${levelWord.meaning}`: `শব্দ পাওয়া যায়নি`}/${levelWord.pronunciation ? `${levelWord.pronunciation}`: `শব্দ পাওয়া যায়নি`}</h1>
     <div class="flex justify-between">
         <button class="btn"><i class="fa-solid fa-circle-question"></i></button>
         <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
