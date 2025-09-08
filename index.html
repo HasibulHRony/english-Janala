@@ -71,18 +71,36 @@
             </div>
 
             <!-- all words by level container  -->
-             <div id="all-level-words" class="grid grid-cols-3 gap-3 bg-gray-200 p-4">
-                
+            <div id="all-level-words" class="grid grid-cols-3 gap-3 bg-gray-200 p-4">
+
 
 
                 <!-- default message  -->
-            <div id="first-default-message"
-                class="bg-gray-200 text-center max-w-[940px] col-span-full py-12 px-16 rounded-xl mx-auto mb-8">
-                <p class="font-medium mb-4">আপনি এখনো কোন Lesson Select করেন নি</p>
-                <h2 class="font-medium text-4xl">একটি Lesson Select করুন।</h2>
-            </div>
-             
+                <div id="first-default-message"
+                    class="bg-gray-200 text-center max-w-[940px] col-span-full py-12 px-16 rounded-xl mx-auto mb-8">
+                    <p class="font-medium mb-4">আপনি এখনো কোন Lesson Select করেন নি</p>
+                    <h2 class="font-medium text-4xl">একটি Lesson Select করুন।</h2>
+                </div>
+
         </section>
+
+        <!-- modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" >open modal</button> -->
+        <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="detail-container" class="p-5">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <div><button class="btn btn-active btn-primary">complete Learning</button></div>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
 
     </main>
 

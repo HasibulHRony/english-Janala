@@ -1,3 +1,16 @@
+//create synonyms
+const createSynonyms = (arr) => {
+  const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
+  return htmlElements.join(" ");
+};
+
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
+
 //load levels
 const loadLevels = () => {
     const url = "https://openapi.programming-hero.com/api/levels/all";
@@ -7,9 +20,9 @@ const loadLevels = () => {
 }
 
 //set bg color for active lesson
-const removeActive = () =>{
+const removeActive = () => {
     const allLessons = document.querySelectorAll(".lesson-btn");
-    allLessons.forEach((allLesson)=>{
+    allLessons.forEach((allLesson) => {
         allLesson.classList.remove("active");
     })
 }
@@ -37,6 +50,41 @@ const loadLevelWords = (id) => {
         });
 }
 
+
+//loading word details 
+const loadWordDetails = (id) => {
+    const url = `https://openapi.programming-hero.com/api/word/${id}`
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => displayWordModal(data.data))
+}
+
+
+//display word modal
+const displayWordModal = (detail) => {
+
+    const modalDetail = document.getElementById("detail-container");
+    modalDetail.innerHTML = `
+        
+            <h2 class="text-3xl font-bold text-center">${detail.word}<span> ><i class="fa-solid fa-volume-high"></i></span></h>
+            <div>
+                <p class="text-2xl text-center">meaning</p>
+                <p class="text-lg text-center font-semibold">${detail.meaning}</p>
+            </div>
+            <div>
+                <p class="text-2xl text-center">Example</p>
+                <p class="text-lg text-center font-semibold">${detail.sentence}</p>
+            </div>
+            <div>
+                <p class="text-2xl text-center">সমার্থক শব্দগুলো</p>
+                <div class="text-lg text-center font-semibold">${createSynonyms(detail.synonyms)}</div>
+            </div>
+            
+        
+        
+    `
+    document.getElementById("my_modal").showModal()
+}
 
 
 //display each levels every words
@@ -66,10 +114,10 @@ const displayLevelWords = (levelWords) => {
         wordsCards.innerHTML = `<div class="text-center p-4 bg-white shadow-sm rounded-lg">
     <h1 class="mb-2 font-semibold text-3xl">${levelWord.word}</h1>
     <h1 class="mb-2  text-xl">meaning/pronunciation</h1>
-    <h1 class="mb-2  text-xl">${levelWord.meaning ? `${levelWord.meaning}`: `শব্দ পাওয়া যায়নি`}/${levelWord.pronunciation ? `${levelWord.pronunciation}`: `শব্দ পাওয়া যায়নি`}</h1>
+    <h1 class="mb-2  text-xl">${levelWord.meaning ? `${levelWord.meaning}` : `শব্দ পাওয়া যায়নি`}/${levelWord.pronunciation ? `${levelWord.pronunciation}` : `শব্দ পাওয়া যায়নি`}</h1>
     <div class="flex justify-between">
-        <button class="btn"><i class="fa-solid fa-circle-question"></i></button>
-        <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+        <button onclick="loadWordDetails(${levelWord.id})" class="btn"><i class="fa-solid fa-circle-question"></i></button>
+        <button onclick="pronounceWord('${levelWord.word}')" class="btn"><i class="fa-solid fa-volume-high"></i></button>
     </div>
     </div>`;
         allLevelWords.appendChild(wordsCards)
